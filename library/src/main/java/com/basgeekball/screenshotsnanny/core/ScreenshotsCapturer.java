@@ -48,25 +48,30 @@ public class ScreenshotsCapturer {
         }
     }
 
-    public void execute(final Activity activity, final int delay) {
+    private void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final int delay) {
         final View contentView = activity.findViewById(android.R.id.content);
-        final ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
+        ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 // call getViewTreeObserver() again, because previous ViewTreeObserver is not alive
+                ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    contentView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    viewTreeObserver.removeOnGlobalLayoutListener(this);
                 } else {
-                    contentView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    viewTreeObserver.removeGlobalOnLayoutListener(this);
                 }
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
-                    }
-                }, delay);
+                new Handler().postDelayed(task, delay);
             }
         });
+    }
+
+    public void execute(final Activity activity, int delay) {
+        performTaskWhenLayoutStateChanges(activity, new Runnable() {
+            @Override
+            public void run() {
+                saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
+            }
+        }, delay);
     }
 }
