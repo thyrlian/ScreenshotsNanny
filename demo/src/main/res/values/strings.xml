@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ScreenshotsNannyDemo</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="welcome">欢迎 Welcome</string>
 </resources>
