@@ -1,6 +1,7 @@
 package com.basgeekball.screenshotsnanny.core;
 
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
@@ -26,6 +27,12 @@ public class ScreenshotsCapturer {
         return Environment.MEDIA_MOUNTED.equals(state);
     }
 
+    private boolean hasWriteExternalStoragePermission(Activity activity) {
+        String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
+        int result = activity.getApplicationContext().checkCallingOrSelfPermission(permission);
+        return (result == PackageManager.PERMISSION_GRANTED);
+    }
+
     private void createDirIfNotExist(File dir) {
         if (!dir.exists()) {
             dir.mkdirs();
@@ -33,6 +40,9 @@ public class ScreenshotsCapturer {
     }
 
     private void saveToFile(Bitmap bitmap, String filename, Activity activity) {
+        if (!hasWriteExternalStoragePermission(activity)) {
+            throw new RuntimeException("Please set WRITE_EXTERNAL_STORAGE permission in your app.");
+        }
         String appName = activity.getString(activity.getApplicationInfo().labelRes);
         File screenshotDir = new File(Environment.getExternalStorageDirectory() + "/Screenshots/" + appName);
         createDirIfNotExist(screenshotDir);
