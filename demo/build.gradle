@@ -17,6 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        prod {
+            applicationId "com.basgeekball.screenshotsnanny.demo"
+        }
+        screenshots {
+            applicationId "com.basgeekball.screenshotsnanny.screenshots"
+        }
+    }
 }
 
 dependencies {
