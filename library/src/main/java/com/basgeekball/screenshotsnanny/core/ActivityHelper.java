@@ -1,10 +1,13 @@
 package com.basgeekball.screenshotsnanny.core;
 
 import android.app.Activity;
+import android.os.Build;
 import android.util.ArrayMap;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivityHelper {
     private static final Class mActivityThreadClass;
@@ -47,7 +50,12 @@ public class ActivityHelper {
         Activity activity = null;
         try {
             Object currentActivityThread = mActivityThreadClass.getMethod("currentActivityThread").invoke(null);
-            ArrayMap<Object, Object> activities = (ArrayMap<Object, Object>) mActivitiesField.get(currentActivityThread);
+            Map<Object, Object> activities;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                activities = (ArrayMap<Object, Object>) mActivitiesField.get(currentActivityThread);
+            } else {
+                activities = (HashMap<Object, Object>) mActivitiesField.get(currentActivityThread);
+            }
             for (Object activityClientRecord : activities.values()) {
                 boolean paused = mPausedField.getBoolean(activityClientRecord);
                 boolean stopped = mStoppedField.getBoolean(activityClientRecord);
