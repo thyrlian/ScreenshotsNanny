@@ -13,26 +13,29 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ScreenshotsCapturer {
+    private ScreenshotsCapturer() {
+        throw new AssertionError();
+    }
 
-    private Bitmap captureScreenshot(Activity activity) {
+    private static Bitmap captureScreenshot(Activity activity) {
         View rootView = activity.findViewById(android.R.id.content).getRootView();
         rootView.setDrawingCacheEnabled(true);
         rootView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         return rootView.getDrawingCache();
     }
 
-    private boolean isExternalStorageWritable() {
+    private static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
     }
 
-    private void createDirIfNotExist(File dir) {
+    private static void createDirIfNotExist(File dir) {
         if (!dir.exists()) {
             dir.mkdirs();
         }
     }
 
-    private void saveToFile(Bitmap bitmap, String filename, Activity activity) {
+    private static void saveToFile(Bitmap bitmap, String filename, Activity activity) {
         String appName = activity.getString(activity.getApplicationInfo().labelRes);
         File screenshotDir = new File(Environment.getExternalStorageDirectory() + "/Screenshots/" + appName);
         createDirIfNotExist(screenshotDir);
@@ -48,7 +51,7 @@ public class ScreenshotsCapturer {
         }
     }
 
-    private void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final int delay) {
+    private static void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final int delay) {
         final View contentView = activity.findViewById(android.R.id.content);
         ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -66,7 +69,7 @@ public class ScreenshotsCapturer {
         });
     }
 
-    public void execute(final Activity activity, int delay) {
+    public static void execute(final Activity activity, int delay) {
         performTaskWhenLayoutStateChanges(activity, new Runnable() {
             @Override
             public void run() {
@@ -75,7 +78,7 @@ public class ScreenshotsCapturer {
         }, delay);
     }
 
-    public void execute(Activity activity) {
+    public static void execute(Activity activity) {
         saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
     }
 }

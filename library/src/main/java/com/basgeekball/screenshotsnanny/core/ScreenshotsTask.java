@@ -13,7 +13,7 @@ public class ScreenshotsTask {
                     @Override
                     public void run() {
                         Activity activity = ActivityHelper.getCurrentActivity();
-                        new ScreenshotsCapturer().execute(activity);
+                        ScreenshotsCapturer.execute(activity);
                         activity.finish();
                     }
                 }, screenshotDelay);
