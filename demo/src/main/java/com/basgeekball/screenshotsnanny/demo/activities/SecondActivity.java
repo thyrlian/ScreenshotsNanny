@@ -1,10 +1,12 @@
-package com.basgeekball.screenshotsnanny.demo;
+package com.basgeekball.screenshotsnanny.demo.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.basgeekball.screenshotsnanny.demo.R;
 
 public class SecondActivity extends AppCompatActivity {
 

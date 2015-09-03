@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">ScreenshotsNannyDemo</string>
 
+    <!-- MainActivity -->
     <string name="welcome">欢迎 Welcome</string>
     <string name="next">Next Activity</string>
     <string name="type_hint">Enter text here</string>
 
+    <!-- SecondActivity -->
     <string name="title_activity_second">SecondActivity</string>
 </resources>
