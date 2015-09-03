@@ -70,8 +70,12 @@ public class ScreenshotsCapturer {
         performTaskWhenLayoutStateChanges(activity, new Runnable() {
             @Override
             public void run() {
-                saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
+                execute(activity);
             }
         }, delay);
+    }
+
+    public void execute(Activity activity) {
+        saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
     }
 }
