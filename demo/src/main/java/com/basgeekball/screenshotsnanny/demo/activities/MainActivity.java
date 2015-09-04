@@ -15,12 +15,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final EditText editTextContent = (EditText) findViewById(R.id.edit_text_content);
-        Button buttonNext = (Button) findViewById(R.id.button_next);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
+        Button buttonSecond = (Button) findViewById(R.id.button_second);
+        Button buttonNetwork = (Button) findViewById(R.id.button_network);
+        buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String content = editTextContent.getText().toString();
                 startActivity(SecondActivity.createIntent(MainActivity.this, content));
+            }
+        });
+        buttonNetwork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(NetworkActivity.createIntent(MainActivity.this));
             }
         });
     }
