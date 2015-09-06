@@ -12,5 +12,6 @@
 
     <!-- NetworkActivity -->
     <string name="title_activity_network">NetworkActivity</string>
+    <string name="content_description_avatar">Avatar</string>
 
 </resources>
