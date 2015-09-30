@@ -1,9 +1,17 @@
 package com.basgeekball.screenshotsnanny;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.basgeekball.screenshotsnanny.core.ActivityCounter;
+import com.basgeekball.screenshotsnanny.core.Callback;
 import com.basgeekball.screenshotsnanny.demo.R;
+import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
+import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
+import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
+
+import static com.basgeekball.screenshotsnanny.core.ActivityLauncher.startActivityAndTakeScreenshot;
 
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
@@ -11,5 +19,35 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots_prime);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, MainActivity.class));
+            }
+        });
+
+        startActivityAndTakeScreenshot(SecondActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(SecondActivity.createIntent(ScreenshotsPrimeActivity.this, "London bridge is falling down"));
+            }
+        });
+
+        startActivityAndTakeScreenshot(NetworkActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
+            }
+        });
+
+        if (!ActivityCounter.isAnyActivityRunning) {
+            finish();
+        }
     }
 }
