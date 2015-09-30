@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.os.Handler;
 
 public class ScreenshotsTask {
-    public static void perform(final ActivityStarter activityStarter, long activityDelay, final long screenshotDelay) {
+    public static void perform(final Callback callback, long activityDelay, final long screenshotDelay) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                activityStarter.go();
+                callback.execute();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

@@ -9,9 +9,9 @@ public class ActivityLauncher {
         if (!ActivityCounter.isCalledAlready(T) && !ActivityCounter.isAnyActivityRunning) {
             ActivityCounter.add(T);
             ActivityCounter.isAnyActivityRunning = true;
-            ScreenshotsTask.perform(new ActivityStarter() {
+            ScreenshotsTask.perform(new Callback() {
                 @Override
-                public void go() {
+                public void execute() {
                     callback.execute();
                     ActivityCounter.isAnyActivityRunning = false;
                 }
