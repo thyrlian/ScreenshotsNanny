@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ActivityCounter {
 
+    public static boolean isAnyActivityRunning = false;
     public static ArrayList<Class<?>> activities = new ArrayList<Class<?>>();
 
     private ActivityCounter() {
