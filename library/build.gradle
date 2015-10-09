@@ -30,22 +30,8 @@ android {
     }
 }
 
-apply plugin: 'net.vrallev.jarjar'
-
-jarjar {
-    jarJarFile 'libs/jarjar-1.4.jar'
-    rules = [
-            'rule org.apache.** ext.org.apache.@1',
-            'rule org.json.** ext.org.json.@1'
-    ]
-    srcExcludes = ['META-INF/**']
-    outputName 'wiremock_repackaged.jar'
-    outputDir 'libs'
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
-    jarjar 'com.github.tomakehurst:wiremock:2.0.5-beta'
 }
