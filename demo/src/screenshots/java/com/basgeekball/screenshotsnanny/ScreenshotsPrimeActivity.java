@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
-import com.basgeekball.screenshotsnanny.core.Callback;
-import com.basgeekball.screenshotsnanny.core.ResourceReader;
+import com.basgeekball.screenshotsnanny.helper.Callback;
+import com.basgeekball.screenshotsnanny.helper.ResourceReader;
 import com.basgeekball.screenshotsnanny.demo.R;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;

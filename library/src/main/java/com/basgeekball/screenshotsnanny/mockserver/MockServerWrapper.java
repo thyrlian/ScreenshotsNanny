@@ -2,7 +2,7 @@ package com.basgeekball.screenshotsnanny.mockserver;
 
 import android.util.Log;
 
-import com.basgeekball.screenshotsnanny.core.Callback;
+import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 

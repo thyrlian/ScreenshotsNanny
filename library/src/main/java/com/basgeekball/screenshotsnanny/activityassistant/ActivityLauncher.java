@@ -1,6 +1,6 @@
 package com.basgeekball.screenshotsnanny.activityassistant;
 
-import com.basgeekball.screenshotsnanny.core.Callback;
+import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.basgeekball.screenshotsnanny.core.ScreenshotsTask;
 
 public class ActivityLauncher {

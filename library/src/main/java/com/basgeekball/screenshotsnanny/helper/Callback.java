@@ -1,4 +1,4 @@
-package com.basgeekball.screenshotsnanny.core;
+package com.basgeekball.screenshotsnanny.helper;
 
 public interface Callback {
     void execute();

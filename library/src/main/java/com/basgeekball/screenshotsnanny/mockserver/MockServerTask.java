@@ -2,7 +2,7 @@ package com.basgeekball.screenshotsnanny.mockserver;
 
 import android.os.AsyncTask;
 
-import com.basgeekball.screenshotsnanny.core.Callback;
+import com.basgeekball.screenshotsnanny.helper.Callback;
 
 public class MockServerTask extends AsyncTask<Void, Void, Void> {
 
