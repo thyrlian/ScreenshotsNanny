@@ -6,19 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.basgeekball.screenshotsnanny.core.ActivityCounter;
 import com.basgeekball.screenshotsnanny.core.Callback;
+import com.basgeekball.screenshotsnanny.core.ResourceReader;
 import com.basgeekball.screenshotsnanny.demo.R;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
+import com.basgeekball.screenshotsnanny.mockserver.MockServerWrapper;
 
 import static com.basgeekball.screenshotsnanny.core.ActivityLauncher.startActivityAndTakeScreenshot;
 
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
+    private MockServerWrapper mServer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots_prime);
+
+        mServer = new MockServerWrapper();
+        String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
+        mServer.start(response);
     }
 
     @Override
@@ -47,6 +55,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         });
 
         if (!ActivityCounter.isAnyActivityRunning) {
+            mServer.stop();
             finish();
         }
     }
