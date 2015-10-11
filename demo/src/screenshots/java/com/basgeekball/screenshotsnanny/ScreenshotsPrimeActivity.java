@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.basgeekball.screenshotsnanny.core.ActivityCounter;
+import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
 import com.basgeekball.screenshotsnanny.core.Callback;
 import com.basgeekball.screenshotsnanny.core.ResourceReader;
 import com.basgeekball.screenshotsnanny.demo.R;
@@ -13,7 +13,7 @@ import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
 import com.basgeekball.screenshotsnanny.mockserver.MockServerWrapper;
 
-import static com.basgeekball.screenshotsnanny.core.ActivityLauncher.startActivityAndTakeScreenshot;
+import static com.basgeekball.screenshotsnanny.activityassistant.ActivityLauncher.startActivityAndTakeScreenshot;
 
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 

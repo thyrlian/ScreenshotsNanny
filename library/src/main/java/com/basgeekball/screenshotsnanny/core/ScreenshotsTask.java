@@ -3,6 +3,8 @@ package com.basgeekball.screenshotsnanny.core;
 import android.app.Activity;
 import android.os.Handler;
 
+import com.basgeekball.screenshotsnanny.activityassistant.ActivityHelper;
+
 public class ScreenshotsTask {
     public static void perform(final Callback callback, long activityDelay, final long screenshotDelay) {
         new Handler().postDelayed(new Runnable() {

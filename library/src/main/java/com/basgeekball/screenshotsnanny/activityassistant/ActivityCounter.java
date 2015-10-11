@@ -1,4 +1,4 @@
-package com.basgeekball.screenshotsnanny.core;
+package com.basgeekball.screenshotsnanny.activityassistant;
 
 import java.util.ArrayList;
 

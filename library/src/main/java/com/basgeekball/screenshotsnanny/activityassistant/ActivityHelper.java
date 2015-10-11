@@ -1,4 +1,4 @@
-package com.basgeekball.screenshotsnanny.core;
+package com.basgeekball.screenshotsnanny.activityassistant;
 
 import android.app.Activity;
 import android.os.Build;
