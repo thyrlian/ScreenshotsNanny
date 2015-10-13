@@ -32,7 +32,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
             @Override
             public void execute(String value) {
-                PowerChanger.changeFinalString(GithubService.class, "API_URL", value.replaceAll("/$", ""));
+                PowerChanger.changeFinalString(GithubService.class, "API_URL", value);
             }
         };
         mServer.start(changeUrlCallback, response);

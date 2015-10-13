@@ -30,7 +30,7 @@ public class MockServerWrapper {
                     e.printStackTrace();
                 }
                 if (mServer != null) {
-                    mUrl = mServer.url("").url().toString();
+                    mUrl = mServer.url("").url().toString().replaceAll("/$", "");
                     Log.i(LOG_TAG, "MockServer URL: " + mUrl);
                     changeUrlCallback.execute(mUrl);
                 }
