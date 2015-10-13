@@ -3,17 +3,20 @@ package com.basgeekball.screenshotsnanny.mockserver;
 import android.util.Log;
 
 import com.basgeekball.screenshotsnanny.helper.Callback;
+import com.basgeekball.screenshotsnanny.helper.ParameterizedCallback;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 
 import java.io.IOException;
+
+import static com.basgeekball.screenshotsnanny.core.Constants.LOG_TAG;
 
 public class MockServerWrapper {
 
     private MockWebServer mServer;
     private String mUrl;
 
-    public void start(final MockResponse... mockResponses) {
+    public void start(final ParameterizedCallback changeUrlCallback, final MockResponse... mockResponses) {
         new MockServerTask().run(new Callback() {
             @Override
             public void execute() {
@@ -28,19 +31,20 @@ public class MockServerWrapper {
                 }
                 if (mServer != null) {
                     mUrl = mServer.url("").url().toString();
-                    Log.i("XXX", "MockServer URL: " + mUrl);
+                    Log.i(LOG_TAG, "MockServer URL: " + mUrl);
+                    changeUrlCallback.execute(mUrl);
                 }
             }
         });
     }
 
-    public void start(final String... mockResponsesBodies) {
+    public void start(ParameterizedCallback changeUrlCallback, final String... mockResponsesBodies) {
         int amount = mockResponsesBodies.length;
         MockResponse mockResponses[] = new MockResponse[amount];
         for (int i = 0; i < amount; i++) {
             mockResponses[i] = new MockResponse().setBody(mockResponsesBodies[i]);
         }
-        start(mockResponses);
+        start(changeUrlCallback, mockResponses);
     }
 
     public void stop() {

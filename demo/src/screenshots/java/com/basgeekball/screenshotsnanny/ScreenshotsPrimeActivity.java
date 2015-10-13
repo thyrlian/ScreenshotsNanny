@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
-import com.basgeekball.screenshotsnanny.helper.Callback;
-import com.basgeekball.screenshotsnanny.helper.ResourceReader;
 import com.basgeekball.screenshotsnanny.demo.R;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
+import com.basgeekball.screenshotsnanny.demo.network.GithubService;
+import com.basgeekball.screenshotsnanny.helper.Callback;
+import com.basgeekball.screenshotsnanny.helper.ParameterizedCallback;
+import com.basgeekball.screenshotsnanny.helper.PowerChanger;
+import com.basgeekball.screenshotsnanny.helper.ResourceReader;
 import com.basgeekball.screenshotsnanny.mockserver.MockServerWrapper;
 
 import static com.basgeekball.screenshotsnanny.activityassistant.ActivityLauncher.startActivityAndTakeScreenshot;
@@ -26,7 +29,13 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
         mServer = new MockServerWrapper();
         String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
-        mServer.start(response);
+        ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
+            @Override
+            public void execute(String value) {
+                PowerChanger.changeFinalString(GithubService.class, "API_URL", value.replaceAll("/$", ""));
+            }
+        };
+        mServer.start(changeUrlCallback, response);
     }
 
     @Override
