@@ -81,6 +81,6 @@ public class ScreenshotsCapturer {
 
     public static void execute(Activity activity) {
         saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
-        Log.i(Constants.LOG_TAG, "Screenshot is taken");
+        Log.i(Constants.LOG_TAG, "♬ Screenshot is taken");
     }
 }

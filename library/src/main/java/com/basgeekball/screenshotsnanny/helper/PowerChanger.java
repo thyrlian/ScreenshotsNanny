@@ -29,7 +29,7 @@ public class PowerChanger {
             Field field = klass.getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(null, newValue);
-            Log.i(LOG_TAG, "New value via Reflection: " + field.get(null).toString());
+            Log.i(LOG_TAG, "⚙ New value via Reflection: " + field.get(null).toString());
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

@@ -21,7 +21,7 @@ public class KeyboardHelper {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            Log.i(Constants.LOG_TAG, "Hide keyboard if it pops up");
+            Log.i(Constants.LOG_TAG, "♬ Hide keyboard");
         }
     }
 
