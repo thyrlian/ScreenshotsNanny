@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -80,5 +81,6 @@ public class ScreenshotsCapturer {
 
     public static void execute(Activity activity) {
         saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
+        Log.i(Constants.LOG_TAG, "Screenshot is taken");
     }
 }
