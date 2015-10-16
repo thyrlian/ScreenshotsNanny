@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextContent = (EditText) findViewById(R.id.edit_text_content);
         Button buttonSecond = (Button) findViewById(R.id.button_second);
         Button buttonNetwork = (Button) findViewById(R.id.button_network);
+        Button buttonMaps = (Button) findViewById(R.id.button_maps);
         buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(NetworkActivity.createIntent(MainActivity.this));
+            }
+        });
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(MapsActivity.createIntent(MainActivity.this));
             }
         });
     }

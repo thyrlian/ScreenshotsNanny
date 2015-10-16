@@ -5,6 +5,7 @@
     <string name="welcome">欢迎 Welcome</string>
     <string name="button_second">Go</string>
     <string name="button_network">Network Activity</string>
+    <string name="button_maps">Maps Activity</string>
     <string name="type_hint">Enter text here</string>
 
     <!-- SecondActivity -->
@@ -13,5 +14,9 @@
     <!-- NetworkActivity -->
     <string name="title_activity_network">NetworkActivity</string>
     <string name="content_description_avatar">Avatar</string>
+
+    <!-- MapsActivity -->
+    <string name="title_activity_maps">Map</string>
+    <string name="map_marker_title">Ich bin ein Berliner</string>
 
 </resources>

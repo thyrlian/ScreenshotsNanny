@@ -3,12 +3,16 @@
     package="com.basgeekball.screenshotsnanny.demo" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name" >
@@ -24,6 +28,10 @@
         <activity
             android:name=".activities.NetworkActivity"
             android:label="@string/title_activity_network" >
+        </activity>
+        <activity
+            android:name=".activities.MapsActivity"
+            android:label="@string/title_activity_maps" >
         </activity>
     </application>
 
