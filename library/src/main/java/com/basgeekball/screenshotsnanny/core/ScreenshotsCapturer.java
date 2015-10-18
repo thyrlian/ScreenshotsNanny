@@ -2,6 +2,7 @@ package com.basgeekball.screenshotsnanny.core;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
@@ -20,9 +21,10 @@ public class ScreenshotsCapturer {
 
     private static Bitmap captureScreenshot(Activity activity) {
         View rootView = activity.findViewById(android.R.id.content).getRootView();
-        rootView.setDrawingCacheEnabled(true);
-        rootView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        return rootView.getDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(rootView.getWidth(), rootView.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        rootView.draw(canvas);
+        return bitmap;
     }
 
     private static boolean isExternalStorageWritable() {
