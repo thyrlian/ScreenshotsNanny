@@ -6,9 +6,16 @@ import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.basgeekball.screenshotsnanny.helper.Callback;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -54,7 +61,7 @@ public class ScreenshotsCapturer {
         }
     }
 
-    private static void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final int delay) {
+    private static void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final long delay) {
         final View contentView = activity.findViewById(android.R.id.content);
         ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
         viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -72,7 +79,7 @@ public class ScreenshotsCapturer {
         });
     }
 
-    public static void execute(final Activity activity, int delay) {
+    public static void execute(final Activity activity, long delay) {
         performTaskWhenLayoutStateChanges(activity, new Runnable() {
             @Override
             public void run() {
@@ -84,5 +91,49 @@ public class ScreenshotsCapturer {
     public static void execute(Activity activity) {
         saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
         Log.i(Constants.LOG_TAG, "♬ Screenshot is taken");
+    }
+
+    private static void executeWithMap(final Activity activity, int mapFragmentId, final Callback callback) {
+        if (activity instanceof FragmentActivity) {
+            FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
+            Fragment fragment = fragmentManager.findFragmentById(mapFragmentId);
+            if (fragment instanceof SupportMapFragment) {
+                final GoogleMap map = ((SupportMapFragment) fragment).getMap();
+                map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                    @Override
+                    public void onMapLoaded() {
+                        map.snapshot(new GoogleMap.SnapshotReadyCallback() {
+                            @Override
+                            public void onSnapshotReady(Bitmap bitmap) {
+                                saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
+                                Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
+                                callback.execute();
+                            }
+                        });
+                    }
+                });
+            }
+        }
+    }
+
+    public static void executeWithMap(final Activity activity, int mapFragmentId) {
+        executeWithMap(activity, mapFragmentId, new Callback() {
+            @Override
+            public void execute() {
+            }
+        });
+    }
+
+    public static void executeWithMap(final Activity activity, int mapFragmentId, boolean finishActivityAfterExecution) {
+        if (finishActivityAfterExecution) {
+            executeWithMap(activity, mapFragmentId, new Callback() {
+                @Override
+                public void execute() {
+                    activity.finish();
+                }
+            });
+        } else {
+            executeWithMap(activity, mapFragmentId);
+        }
     }
 }

@@ -11,11 +11,11 @@ public class ActivityLauncher {
     private ActivityLauncher() {
     }
 
-    public static void startActivityAndTakeScreenshot(Class<?> T, final Callback callback, long screenshotDelay) {
+    private static void startActivityAndTakeScreenshot(Class<?> T, final Callback callback, boolean hasMap, int mapFragmentId, long screenshotDelay) {
         if (!ActivityCounter.isCalledAlready(T) && !ActivityCounter.isAnyActivityRunning) {
             ActivityCounter.add(T);
             ActivityCounter.isAnyActivityRunning = true;
-            ScreenshotsTask.perform(new Callback() {
+            Callback completeTaskCallback = new Callback() {
                 @Override
                 public void execute() {
                     callback.execute();
@@ -27,11 +27,28 @@ public class ActivityLauncher {
                     }, 1000);
                     ActivityCounter.isAnyActivityRunning = false;
                 }
-            }, 0, screenshotDelay);
+            };
+            if (hasMap) {
+                ScreenshotsTask.perform(T, completeTaskCallback, mapFragmentId, 0, screenshotDelay);
+            } else {
+                ScreenshotsTask.perform(completeTaskCallback, 0, screenshotDelay);
+            }
         }
     }
 
-    public static void startActivityAndTakeScreenshot(Class<?> T, final Callback callback) {
+    public static void startActivityAndTakeScreenshot(Class<?> T, Callback callback, long screenshotDelay) {
+        startActivityAndTakeScreenshot(T, callback, false, 0, screenshotDelay);
+    }
+
+    public static void startActivityAndTakeScreenshot(Class<?> T, Callback callback) {
         startActivityAndTakeScreenshot(T, callback, 3000);
+    }
+
+    public static void startActivityContainsMapAndTakeScreenshot(Class<?> T, Callback callback, int mapFragmentId, long screenshotDelay) {
+        startActivityAndTakeScreenshot(T, callback, true, mapFragmentId, screenshotDelay);
+    }
+
+    public static void startActivityContainsMapAndTakeScreenshot(Class<?> T, Callback callback, int mapFragmentId) {
+        startActivityContainsMapAndTakeScreenshot(T, callback, mapFragmentId, 3000);
     }
 }

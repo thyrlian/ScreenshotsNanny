@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
 import com.basgeekball.screenshotsnanny.demo.R;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
+import com.basgeekball.screenshotsnanny.demo.activities.MapsActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
 import com.basgeekball.screenshotsnanny.demo.network.GithubService;
@@ -17,6 +18,7 @@ import com.basgeekball.screenshotsnanny.helper.ResourceReader;
 import com.basgeekball.screenshotsnanny.mockserver.MockServerWrapper;
 
 import static com.basgeekball.screenshotsnanny.activityassistant.ActivityLauncher.startActivityAndTakeScreenshot;
+import static com.basgeekball.screenshotsnanny.activityassistant.ActivityLauncher.startActivityContainsMapAndTakeScreenshot;
 
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
@@ -62,6 +64,13 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
             }
         });
+
+        startActivityContainsMapAndTakeScreenshot(MapsActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, MapsActivity.class));
+            }
+        }, R.id.map);
 
         if (!ActivityCounter.isAnyActivityRunning) {
             mServer.stop();

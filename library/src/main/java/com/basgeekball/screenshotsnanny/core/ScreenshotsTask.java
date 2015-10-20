@@ -23,4 +23,20 @@ public class ScreenshotsTask {
             }
         }, activityDelay);
     }
+
+    public static void perform(final Class<?> T, final Callback callback, final int mapFragmentId, long activityDelay, final long screenshotDelay) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                callback.execute();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Activity activity = ActivityHelper.getCurrentActivity();
+                        ScreenshotsCapturer.executeWithMap(activity, mapFragmentId, true);
+                    }
+                }, 1000);
+            }
+        }, activityDelay);
+    }
 }
