@@ -29,13 +29,13 @@ public class ScreenshotsTask {
             @Override
             public void run() {
                 callback.execute();
-                new Handler().postDelayed(new Runnable() {
+                ActivityHelper.doSomethingWhenActivityIsReady(T, new Callback() {
                     @Override
-                    public void run() {
+                    public void execute() {
                         Activity activity = ActivityHelper.getCurrentActivity();
                         ScreenshotsCapturer.executeWithMap(activity, mapFragmentId, true);
                     }
-                }, 1000);
+                });
             }
         }, activityDelay);
     }
