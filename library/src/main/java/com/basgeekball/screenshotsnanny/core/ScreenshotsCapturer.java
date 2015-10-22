@@ -3,16 +3,14 @@ package com.basgeekball.screenshotsnanny.core;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.os.Build;
 import android.os.Environment;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 
+import com.basgeekball.screenshotsnanny.activityassistant.ActivityHelper;
 import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -61,26 +59,8 @@ public class ScreenshotsCapturer {
         }
     }
 
-    private static void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final long delay) {
-        final View contentView = activity.findViewById(android.R.id.content);
-        ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                // call getViewTreeObserver() again, because previous ViewTreeObserver is not alive
-                ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    viewTreeObserver.removeOnGlobalLayoutListener(this);
-                } else {
-                    viewTreeObserver.removeGlobalOnLayoutListener(this);
-                }
-                new Handler().postDelayed(task, delay);
-            }
-        });
-    }
-
     public static void execute(final Activity activity, long delay) {
-        performTaskWhenLayoutStateChanges(activity, new Runnable() {
+        ActivityHelper.performTaskWhenLayoutStateChanges(activity, new Runnable() {
             @Override
             public void run() {
                 execute(activity);

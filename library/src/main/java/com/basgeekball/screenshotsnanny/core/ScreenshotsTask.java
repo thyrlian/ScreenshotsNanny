@@ -29,7 +29,7 @@ public class ScreenshotsTask {
             @Override
             public void run() {
                 callback.execute();
-                ActivityHelper.doSomethingWhenActivityIsReady(T, new Callback() {
+                ActivityHelper.performTaskWhenActivityIsReady(T, new Callback() {
                     @Override
                     public void execute() {
                         Activity activity = ActivityHelper.getCurrentActivity();

@@ -5,6 +5,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.basgeekball.screenshotsnanny.core.Constants;
 import com.basgeekball.screenshotsnanny.helper.Callback;
@@ -83,17 +85,17 @@ public class ActivityHelper {
         return activity;
     }
 
-    public static void doSomethingWhenActivityIsReady(final Class<?> T, final Callback callback) {
+    public static void performTaskWhenActivityIsReady(final Class<?> T, final Callback callback) {
         if (mRetriesCounter < mRetriesMax) {
             if (T.isInstance(getCurrentActivity())) {
-                Log.i(Constants.LOG_TAG, "⚒ Activity is ready, just do it");
+                Log.i(Constants.LOG_TAG, String.format("ℹ %s is ready", T.getSimpleName()));
                 mRetriesCounter = 0;
                 callback.execute();
             } else {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        doSomethingWhenActivityIsReady(T, callback);
+                        performTaskWhenActivityIsReady(T, callback);
                     }
                 }, mWait);
                 mRetriesCounter += 1;
@@ -102,5 +104,27 @@ public class ActivityHelper {
             Log.i(Constants.LOG_TAG, String.format("☠ Timeout: can not find %s", T.getSimpleName()));
             mRetriesCounter = 0;
         }
+    }
+
+    public static void performTaskWhenLayoutStateChanges(Activity activity, final Runnable task, final long delay) {
+        final View contentView = activity.findViewById(android.R.id.content);
+        ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
+        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                // call getViewTreeObserver() again, because previous ViewTreeObserver is not alive
+                ViewTreeObserver viewTreeObserver = contentView.getViewTreeObserver();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    viewTreeObserver.removeOnGlobalLayoutListener(this);
+                } else {
+                    viewTreeObserver.removeGlobalOnLayoutListener(this);
+                }
+                new Handler().postDelayed(task, delay);
+            }
+        });
+    }
+
+    public static void performTaskWhenLayoutStateChanges(Runnable task, long delay) {
+        performTaskWhenLayoutStateChanges(getCurrentActivity(), task, delay);
     }
 }
