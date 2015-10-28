@@ -28,6 +28,10 @@ public class ScreenshotsTask {
         }, activityDelay);
     }
 
+    public static void perform(Callback callback, long screenshotDelay) {
+        perform(callback, 0, screenshotDelay);
+    }
+
     public static void perform(final Class<?> T, final Callback callback, final int mapFragmentId, long activityDelay) {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -47,5 +51,9 @@ public class ScreenshotsTask {
                 });
             }
         }, activityDelay);
+    }
+
+    public static void perform(Class<?> T, Callback callback, int mapFragmentId) {
+        perform(T, callback, mapFragmentId, 0);
     }
 }

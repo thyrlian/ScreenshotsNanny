@@ -29,9 +29,9 @@ public class ActivityLauncher {
                 }
             };
             if (hasMap) {
-                ScreenshotsTask.perform(T, completeTaskCallback, mapFragmentId, 0);
+                ScreenshotsTask.perform(T, completeTaskCallback, mapFragmentId);
             } else {
-                ScreenshotsTask.perform(completeTaskCallback, 0, screenshotDelay);
+                ScreenshotsTask.perform(completeTaskCallback, screenshotDelay);
             }
         }
     }
