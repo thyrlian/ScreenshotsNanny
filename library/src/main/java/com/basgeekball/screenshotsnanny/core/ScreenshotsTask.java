@@ -15,9 +15,13 @@ public class ScreenshotsTask {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Activity activity = ActivityHelper.getCurrentActivity();
-                        ScreenshotsCapturer.execute(activity);
-                        activity.finish();
+                        final Activity activity = ActivityHelper.getCurrentActivity();
+                        ScreenshotsCapturer.execute(activity, new Callback() {
+                            @Override
+                            public void execute() {
+                                activity.finish();
+                            }
+                        });
                     }
                 }, screenshotDelay);
             }
@@ -32,8 +36,13 @@ public class ScreenshotsTask {
                 ActivityHelper.performTaskWhenActivityIsReady(T, new Callback() {
                     @Override
                     public void execute() {
-                        Activity activity = ActivityHelper.getCurrentActivity();
-                        ScreenshotsCapturer.executeWithMap(activity, mapFragmentId, true);
+                        final Activity activity = ActivityHelper.getCurrentActivity();
+                        ScreenshotsCapturer.executeWithMap(activity, mapFragmentId, new Callback() {
+                            @Override
+                            public void execute() {
+                                activity.finish();
+                            }
+                        });
                     }
                 });
             }

@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 
-import com.basgeekball.screenshotsnanny.activityassistant.ActivityHelper;
 import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -59,21 +58,13 @@ public class ScreenshotsCapturer {
         }
     }
 
-    public static void execute(final Activity activity, long delay) {
-        ActivityHelper.performTaskWhenLayoutStateChanges(activity, new Runnable() {
-            @Override
-            public void run() {
-                execute(activity);
-            }
-        }, delay);
-    }
-
-    public static void execute(Activity activity) {
+    public static void execute(Activity activity, Callback callback) {
         saveToFile(captureScreenshot(activity), activity.getClass().getSimpleName(), activity);
         Log.i(Constants.LOG_TAG, "♬ Screenshot is taken");
+        callback.execute();
     }
 
-    private static void executeWithMap(final Activity activity, int mapFragmentId, final Callback callback) {
+    public static void executeWithMap(final Activity activity, int mapFragmentId, final Callback callback) {
         if (activity instanceof FragmentActivity) {
             FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
             Fragment fragment = fragmentManager.findFragmentById(mapFragmentId);
@@ -93,27 +84,6 @@ public class ScreenshotsCapturer {
                     }
                 });
             }
-        }
-    }
-
-    public static void executeWithMap(final Activity activity, int mapFragmentId) {
-        executeWithMap(activity, mapFragmentId, new Callback() {
-            @Override
-            public void execute() {
-            }
-        });
-    }
-
-    public static void executeWithMap(final Activity activity, int mapFragmentId, boolean finishActivityAfterExecution) {
-        if (finishActivityAfterExecution) {
-            executeWithMap(activity, mapFragmentId, new Callback() {
-                @Override
-                public void execute() {
-                    activity.finish();
-                }
-            });
-        } else {
-            executeWithMap(activity, mapFragmentId);
         }
     }
 }
