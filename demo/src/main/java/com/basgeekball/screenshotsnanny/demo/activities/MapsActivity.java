@@ -15,9 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private final double berlinLat = 52.52;
-    private final double berlinLng = 13.40;
-    private final float berlinZoomLevel = 10;
+    private final double mBerlinLat = 52.52;
+    private final double mBerlinLng = 13.40;
+    private final float mBerlinZoomLevel = 10;
 
     public static Intent createIntent(Activity activity) {
         return new Intent(activity, MapsActivity.class);
@@ -33,9 +33,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng berlin = new LatLng(berlinLat, berlinLng);
+        LatLng berlin = new LatLng(mBerlinLat, mBerlinLng);
         googleMap.addMarker(new MarkerOptions().position(berlin).title(getString(R.string.map_marker_title)));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(berlin));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(berlinZoomLevel));
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(mBerlinZoomLevel));
     }
 }

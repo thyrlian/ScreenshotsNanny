@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class ActivityCounter {
 
     public static boolean isAnyActivityRunning = false;
-    private static ArrayList<Class<?>> mActivities = new ArrayList<Class<?>>();
+    private static ArrayList<Class<?>> sActivities = new ArrayList<Class<?>>();
 
     private ActivityCounter() {
     }
 
     public static void add(Class<?> T) {
-        mActivities.add(T);
+        sActivities.add(T);
     }
 
     public static boolean isCalledAlready(Class<?> T) {
-        return mActivities.contains(T);
+        return sActivities.contains(T);
     }
 }

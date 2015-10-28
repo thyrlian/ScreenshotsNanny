@@ -17,15 +17,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ActivityHelper {
-    private static final Class mActivityThreadClass;
-    private static final Field mActivitiesField;
-    private static final Field mPausedField;
-    private static final Field mStoppedField;
-    private static final Field mActivityField;
+    private static final Class sActivityThreadClass;
+    private static final Field sActivitiesField;
+    private static final Field sPausedField;
+    private static final Field sStoppedField;
+    private static final Field sActivityField;
 
-    private static final long mWait = 100;
-    private static final int mRetriesMax = 20;
-    private static int mRetriesCounter = 0;
+    private static final long sWait = 100;
+    private static final int sRetriesMax = 20;
+    private static int sRetriesCounter = 0;
 
     // initialization
     static {
@@ -50,28 +50,28 @@ public class ActivityHelper {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        mActivityThreadClass = tmpActivityThreadClass;
-        mActivitiesField = tmpActivitiesField;
-        mPausedField = tmpPausedField;
-        mStoppedField = tmpStoppedField;
-        mActivityField = tmpActivityField;
+        sActivityThreadClass = tmpActivityThreadClass;
+        sActivitiesField = tmpActivitiesField;
+        sPausedField = tmpPausedField;
+        sStoppedField = tmpStoppedField;
+        sActivityField = tmpActivityField;
     }
 
     public static Activity getCurrentActivity() {
         Activity activity = null;
         try {
-            Object currentActivityThread = mActivityThreadClass.getMethod("currentActivityThread").invoke(null);
+            Object currentActivityThread = sActivityThreadClass.getMethod("currentActivityThread").invoke(null);
             Map<Object, Object> activities;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                activities = (ArrayMap<Object, Object>) mActivitiesField.get(currentActivityThread);
+                activities = (ArrayMap<Object, Object>) sActivitiesField.get(currentActivityThread);
             } else {
-                activities = (HashMap<Object, Object>) mActivitiesField.get(currentActivityThread);
+                activities = (HashMap<Object, Object>) sActivitiesField.get(currentActivityThread);
             }
             for (Object activityClientRecord : activities.values()) {
-                boolean paused = mPausedField.getBoolean(activityClientRecord);
-                boolean stopped = mStoppedField.getBoolean(activityClientRecord);
+                boolean paused = sPausedField.getBoolean(activityClientRecord);
+                boolean stopped = sStoppedField.getBoolean(activityClientRecord);
                 if (!paused && !stopped) {
-                    activity = (Activity) mActivityField.get(activityClientRecord);
+                    activity = (Activity) sActivityField.get(activityClientRecord);
                     break;
                 }
             }
@@ -86,10 +86,10 @@ public class ActivityHelper {
     }
 
     public static void performTaskWhenActivityIsReady(final Class<?> T, final Callback callback) {
-        if (mRetriesCounter < mRetriesMax) {
+        if (sRetriesCounter < sRetriesMax) {
             if (T.isInstance(getCurrentActivity())) {
                 Log.i(Constants.LOG_TAG, String.format("ℹ %s is ready", T.getSimpleName()));
-                mRetriesCounter = 0;
+                sRetriesCounter = 0;
                 callback.execute();
             } else {
                 new Handler().postDelayed(new Runnable() {
@@ -97,12 +97,12 @@ public class ActivityHelper {
                     public void run() {
                         performTaskWhenActivityIsReady(T, callback);
                     }
-                }, mWait);
-                mRetriesCounter += 1;
+                }, sWait);
+                sRetriesCounter += 1;
             }
         } else {
             Log.i(Constants.LOG_TAG, String.format("☠ Timeout: can not find %s", T.getSimpleName()));
-            mRetriesCounter = 0;
+            sRetriesCounter = 0;
         }
     }
 

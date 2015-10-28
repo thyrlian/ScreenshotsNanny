@@ -8,6 +8,8 @@ import com.basgeekball.screenshotsnanny.helper.KeyboardHelper;
 
 public class ActivityLauncher {
 
+    private static long sDefaultScreenshotDelay = 3000;
+
     private ActivityLauncher() {
     }
 
@@ -41,7 +43,7 @@ public class ActivityLauncher {
     }
 
     public static void startActivityAndTakeScreenshot(Class<?> T, Callback callback) {
-        startActivityAndTakeScreenshot(T, callback, 3000);
+        startActivityAndTakeScreenshot(T, callback, sDefaultScreenshotDelay);
     }
 
     public static void startActivityContainsMapAndTakeScreenshot(Class<?> T, Callback callback, int mapFragmentId, long screenshotDelay) {
@@ -49,6 +51,6 @@ public class ActivityLauncher {
     }
 
     public static void startActivityContainsMapAndTakeScreenshot(Class<?> T, Callback callback, int mapFragmentId) {
-        startActivityContainsMapAndTakeScreenshot(T, callback, mapFragmentId, 3000);
+        startActivityContainsMapAndTakeScreenshot(T, callback, mapFragmentId, sDefaultScreenshotDelay);
     }
 }
