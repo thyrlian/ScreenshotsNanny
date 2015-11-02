@@ -1,10 +1,7 @@
 package com.basgeekball.screenshotsnanny.activityassistant;
 
-import android.os.Handler;
-
 import com.basgeekball.screenshotsnanny.core.ScreenshotsTask;
 import com.basgeekball.screenshotsnanny.helper.Callback;
-import com.basgeekball.screenshotsnanny.helper.KeyboardHelper;
 
 public class ActivityLauncher {
 
@@ -13,27 +10,21 @@ public class ActivityLauncher {
     private ActivityLauncher() {
     }
 
-    private static void startActivityAndTakeScreenshot(Class<?> T, final Callback callback, boolean hasMap, int mapFragmentId, long screenshotDelay) {
+    private static void startActivityAndTakeScreenshot(Class<?> T, Callback callback, boolean hasMap, int mapFragmentId, long screenshotDelay) {
         if (!ActivityCounter.isCalledAlready(T) && !ActivityCounter.isAnyActivityRunning) {
             ActivityCounter.add(T);
             ActivityCounter.isAnyActivityRunning = true;
-            Callback completeTaskCallback = new Callback() {
+            Callback completionCallback = new Callback() {
                 @Override
                 public void execute() {
-                    callback.execute();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            KeyboardHelper.hideKeyboard();
-                        }
-                    }, 1000);
                     ActivityCounter.isAnyActivityRunning = false;
+                    ActivityHelper.getCurrentActivity().finish();
                 }
             };
             if (hasMap) {
-                ScreenshotsTask.perform(T, completeTaskCallback, mapFragmentId);
+                ScreenshotsTask.perform(T, callback, completionCallback, mapFragmentId);
             } else {
-                ScreenshotsTask.perform(completeTaskCallback, screenshotDelay);
+                ScreenshotsTask.perform(T, callback, completionCallback, screenshotDelay);
             }
         }
     }

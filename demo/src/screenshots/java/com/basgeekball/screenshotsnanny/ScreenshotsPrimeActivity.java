@@ -3,8 +3,10 @@ package com.basgeekball.screenshotsnanny;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
+import com.basgeekball.screenshotsnanny.core.Constants;
 import com.basgeekball.screenshotsnanny.demo.R;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.MapsActivity;
@@ -73,6 +75,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         }, R.id.map);
 
         if (!ActivityCounter.isAnyActivityRunning) {
+            Log.i(Constants.LOG_TAG, "⚙ Done.");
             mServer.stop();
             finish();
         }
