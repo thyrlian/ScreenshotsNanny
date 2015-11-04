@@ -3,6 +3,7 @@ package com.basgeekball.screenshotsnanny.core;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -75,8 +76,15 @@ public class ScreenshotsCapturer {
                     public void onMapLoaded() {
                         map.snapshot(new GoogleMap.SnapshotReadyCallback() {
                             @Override
-                            public void onSnapshotReady(Bitmap bitmap) {
-                                saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
+                            public void onSnapshotReady(Bitmap snapshot) {
+                                View rootView = activity.findViewById(android.R.id.content).getRootView();
+                                rootView.setDrawingCacheEnabled(true);
+                                Bitmap background = rootView.getDrawingCache();
+                                Bitmap overlay = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
+                                Canvas canvas = new Canvas(overlay);
+                                canvas.drawBitmap(background, 0, 0, null);
+                                canvas.drawBitmap(snapshot, new Matrix(), null);
+                                saveToFile(overlay, activity.getClass().getSimpleName(), activity);
                                 Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
                                 callback.execute();
                             }
