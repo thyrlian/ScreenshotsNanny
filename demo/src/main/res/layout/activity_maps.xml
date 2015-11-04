@@ -20,40 +20,57 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:orientation="horizontal">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/latWrapper"
-            android:layout_width="0dp"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_place" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:singleLine="true">
-            
-            <EditText
-                android:id="@+id/lat"
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/latWrapper"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/edit_text_lat_hint" />
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:paddingLeft="@dimen/widget_horizontal_margin"
+                android:paddingRight="@dimen/widget_horizontal_margin">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/lat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_lat_hint" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/lngWrapper"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:singleLine="true">
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/lng"
-                android:layout_width="match_parent"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/lngWrapper"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/edit_text_lng_hint" />
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:paddingLeft="@dimen/widget_horizontal_margin"
+                android:paddingRight="@dimen/widget_horizontal_margin">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/lng"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_lng_hint" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
