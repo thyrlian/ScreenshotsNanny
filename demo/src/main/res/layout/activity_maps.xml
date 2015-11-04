@@ -48,7 +48,8 @@
                     android:id="@+id/lat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_lat_hint" />
+                    android:hint="@string/edit_text_lat_hint"
+                    android:inputType="numberDecimal|numberSigned" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -66,7 +67,8 @@
                     android:id="@+id/lng"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_lng_hint" />
+                    android:hint="@string/edit_text_lng_hint"
+                    android:inputType="numberDecimal|numberSigned" />
 
             </android.support.design.widget.TextInputLayout>
 
