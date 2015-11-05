@@ -23,6 +23,6 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         TextView textViewContent = (TextView) findViewById(R.id.text_view_content);
-        textViewContent.setText("Once upon a time, " + getIntent().getStringExtra(EXTRA_TEXT));
+        textViewContent.setText(getString(R.string.intro_phrase) + getIntent().getStringExtra(EXTRA_TEXT));
     }
 }

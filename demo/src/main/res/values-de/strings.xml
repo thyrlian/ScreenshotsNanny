@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ScreenshotsNannyDemo</string>
+
+    <!-- MainActivity -->
+    <string name="welcome">Willkommen</string>
+    <string name="button_second">Gehen</string>
+    <string name="button_network">Netzwerk Activity</string>
+    <string name="button_maps">Karten Activity</string>
+    <string name="type_hint">Geben Sie hier Ihren Text ein</string>
+
+    <!-- SecondActivity -->
+    <string name="title_activity_second">ZweiteActivity</string>
+    <string name="intro_phrase">Es war einmal,&#160;</string>
+
+    <!-- NetworkActivity -->
+    <string name="title_activity_network">NetzwerkActivity</string>
+    <string name="content_description_avatar">Avatar</string>
+
+    <!-- MapsActivity -->
+    <string name="title_activity_maps">Karte</string>
+    <string name="map_marker_title">Ich bin ein Berliner</string>
+    <string name="edit_text_lat_hint">Breitengrad</string>
+    <string name="edit_text_lng_hint">Längengrad</string>
+
+
+</resources>

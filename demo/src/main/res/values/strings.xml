@@ -2,7 +2,7 @@
     <string name="app_name">ScreenshotsNannyDemo</string>
 
     <!-- MainActivity -->
-    <string name="welcome">欢迎 Welcome</string>
+    <string name="welcome">Welcome</string>
     <string name="button_second">Go</string>
     <string name="button_network">Network Activity</string>
     <string name="button_maps">Maps Activity</string>
@@ -10,6 +10,7 @@
 
     <!-- SecondActivity -->
     <string name="title_activity_second">SecondActivity</string>
+    <string name="intro_phrase">Once upon a time,&#160;</string>
 
     <!-- NetworkActivity -->
     <string name="title_activity_network">NetworkActivity</string>

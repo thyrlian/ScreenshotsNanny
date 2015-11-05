@@ -14,6 +14,7 @@ import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
 import com.basgeekball.screenshotsnanny.demo.network.GithubService;
 import com.basgeekball.screenshotsnanny.helper.Callback;
+import com.basgeekball.screenshotsnanny.helper.LanguageSwitcher;
 import com.basgeekball.screenshotsnanny.helper.ParameterizedCallback;
 import com.basgeekball.screenshotsnanny.helper.PowerChanger;
 import com.basgeekball.screenshotsnanny.helper.ResourceReader;
@@ -45,6 +46,9 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        // if you want to have screenshots in different language
+        // LanguageSwitcher.change(this, "de");
 
         startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
             @Override
