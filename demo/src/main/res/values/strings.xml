@@ -18,7 +18,8 @@
 
     <!-- MapsActivity -->
     <string name="title_activity_maps">Map</string>
-    <string name="map_marker_title">Ich bin ein Berliner</string>
+    <string name="text_map">Map</string>
+    <string name="map_marker_title">I am a Berliner</string>
     <string name="edit_text_lat_hint">Latitude</string>
     <string name="edit_text_lng_hint">Longitude</string>
 

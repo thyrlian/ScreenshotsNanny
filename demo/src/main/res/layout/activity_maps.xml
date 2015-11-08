@@ -4,12 +4,39 @@
     android:layout_height="match_parent"
     tools:context="com.basgeekball.screenshotsnanny.demo.activities.MapsActivity">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <RatingBar
+        android:id="@+id/ratings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/widget_horizontal_margin"
+        android:paddingTop="@dimen/widget_horizontal_margin"
+        android:layout_centerHorizontal="true"
+        android:numStars="5"
+        android:stepSize="0.5" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/location_info_container" />
+        android:orientation="horizontal"
+        android:layout_above="@+id/location_info_container"
+        android:layout_below="@+id/ratings">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/widget_horizontal_margin"
+            android:layout_marginRight="@dimen/widget_horizontal_margin"
+            android:textStyle="bold"
+            android:text="@string/text_map" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/location_info_container"

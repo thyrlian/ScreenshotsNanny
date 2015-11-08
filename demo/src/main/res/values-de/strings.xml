@@ -18,6 +18,7 @@
 
     <!-- MapsActivity -->
     <string name="title_activity_maps">Karte</string>
+    <string name="text_map">Karte</string>
     <string name="map_marker_title">Ich bin ein Berliner</string>
     <string name="edit_text_lat_hint">Breitengrad</string>
     <string name="edit_text_lng_hint">Längengrad</string>

@@ -9,8 +9,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 
+import com.basgeekball.screenshotsnanny.activityassistant.ActivityHelper;
 import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -59,8 +59,20 @@ public class ScreenshotsCapturer {
         }
     }
 
-    private static int getBarHeight(Activity activity) {
-        return activity.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
+    private static int[] getViewLocationOnlyIfRendered(View view) {
+        int[] location = new int[2];
+        view.getLocationInWindow(location);
+        return location;
+    }
+
+    private static int[] getViewLocationOnlyIfRendered(int viewId) {
+        Activity activity = ActivityHelper.getCurrentActivity();
+        View view;
+        if (activity != null && (view = activity.findViewById(viewId)) != null) {
+            return getViewLocationOnlyIfRendered(view);
+        } else {
+            return null;
+        }
     }
 
     public static void execute(Activity activity, Callback callback) {
@@ -69,7 +81,7 @@ public class ScreenshotsCapturer {
         callback.execute();
     }
 
-    public static void executeWithMap(final Activity activity, int mapFragmentId, final Callback callback) {
+    public static void executeWithMap(final Activity activity, final int mapFragmentId, final Callback callback) {
         if (activity instanceof FragmentActivity) {
             FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
             Fragment fragment = fragmentManager.findFragmentById(mapFragmentId);
@@ -87,7 +99,8 @@ public class ScreenshotsCapturer {
                                 Bitmap bitmap = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
                                 Canvas canvas = new Canvas(bitmap);
                                 canvas.drawBitmap(background, 0, 0, null);
-                                canvas.drawBitmap(map, 0, getBarHeight(activity), null);
+                                int[] mapLocation = getViewLocationOnlyIfRendered(mapFragmentId);
+                                canvas.drawBitmap(map, mapLocation[0], mapLocation[1], null);
                                 saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
                                 Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
                                 callback.execute();
