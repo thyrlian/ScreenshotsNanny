@@ -7,7 +7,7 @@ import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.basgeekball.screenshotsnanny.helper.KeyboardHelper;
 
 public class ScreenshotsTask {
-    private static void perform(final Class<?> T, final Callback callback, final Callback completionCallback, final boolean hasMap, final long screenshotDelay, final int mapFragmentId) {
+    private static void perform(final Class<?> T, final Callback callback, final Callback completionCallback, final boolean hasMap, final int mapFragmentId, final long screenshotDelay) {
         new Runnable() {
             @Override
             public void run() {
@@ -33,10 +33,10 @@ public class ScreenshotsTask {
     }
 
     public static void perform(Class<?> T, Callback callback, Callback completionCallback, long screenshotDelay) {
-        perform(T, callback, completionCallback, false, screenshotDelay, 0);
+        perform(T, callback, completionCallback, false, 0, screenshotDelay);
     }
 
     public static void perform(Class<?> T, Callback callback, Callback completionCallback, int mapFragmentId, long screenshotDelay) {
-        perform(T, callback, completionCallback, true, screenshotDelay, mapFragmentId);
+        perform(T, callback, completionCallback, true, mapFragmentId, screenshotDelay);
     }
 }
