@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -81,7 +82,7 @@ public class ScreenshotsCapturer {
         callback.execute();
     }
 
-    public static void executeWithMap(final Activity activity, final int mapFragmentId, final Callback callback) {
+    public static void executeWithMap(final Activity activity, final int mapFragmentId, final long screenshotDelay, final Callback callback) {
         if (activity instanceof FragmentActivity) {
             FragmentManager fragmentManager = ((FragmentActivity) activity).getSupportFragmentManager();
             Fragment fragment = fragmentManager.findFragmentById(mapFragmentId);
@@ -92,18 +93,33 @@ public class ScreenshotsCapturer {
                     public void onMapLoaded() {
                         map.snapshot(new GoogleMap.SnapshotReadyCallback() {
                             @Override
-                            public void onSnapshotReady(Bitmap map) {
-                                View rootView = activity.findViewById(android.R.id.content).getRootView();
-                                rootView.setDrawingCacheEnabled(true);
-                                Bitmap background = rootView.getDrawingCache();
-                                Bitmap bitmap = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
-                                Canvas canvas = new Canvas(bitmap);
-                                canvas.drawBitmap(background, 0, 0, null);
-                                int[] mapLocation = getViewLocationOnlyIfRendered(mapFragmentId);
-                                canvas.drawBitmap(map, mapLocation[0], mapLocation[1], null);
-                                saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
-                                Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
-                                callback.execute();
+                            public void onSnapshotReady(final Bitmap map) {
+                                final Callback drawScreenshot = new Callback() {
+                                    @Override
+                                    public void execute() {
+                                        View rootView = activity.findViewById(android.R.id.content).getRootView();
+                                        rootView.setDrawingCacheEnabled(true);
+                                        Bitmap background = rootView.getDrawingCache();
+                                        Bitmap bitmap = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
+                                        Canvas canvas = new Canvas(bitmap);
+                                        canvas.drawBitmap(background, 0, 0, null);
+                                        int[] mapLocation = getViewLocationOnlyIfRendered(mapFragmentId);
+                                        canvas.drawBitmap(map, mapLocation[0], mapLocation[1], null);
+                                        saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
+                                        Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
+                                        callback.execute();
+                                    }
+                                };
+                                if (screenshotDelay > 0) {
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            drawScreenshot.execute();
+                                        }
+                                    }, screenshotDelay);
+                                } else {
+                                    drawScreenshot.execute();
+                                }
                             }
                         });
                     }

@@ -17,7 +17,7 @@ public class ScreenshotsTask {
                     public void execute() {
                         KeyboardHelper.hideKeyboard();
                         if (hasMap) {
-                            ScreenshotsCapturer.executeWithMap(ActivityHelper.getCurrentActivity(), mapFragmentId, completionCallback);
+                            ScreenshotsCapturer.executeWithMap(ActivityHelper.getCurrentActivity(), mapFragmentId, screenshotDelay, completionCallback);
                         } else {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
@@ -36,7 +36,7 @@ public class ScreenshotsTask {
         perform(T, callback, completionCallback, false, screenshotDelay, 0);
     }
 
-    public static void perform(Class<?> T, Callback callback, Callback completionCallback, int mapFragmentId) {
-        perform(T, callback, completionCallback, true, 0, mapFragmentId);
+    public static void perform(Class<?> T, Callback callback, Callback completionCallback, int mapFragmentId, long screenshotDelay) {
+        perform(T, callback, completionCallback, true, screenshotDelay, mapFragmentId);
     }
 }

@@ -22,7 +22,7 @@ public class ActivityLauncher {
                 }
             };
             if (hasMap) {
-                ScreenshotsTask.perform(T, callback, completionCallback, mapFragmentId);
+                ScreenshotsTask.perform(T, callback, completionCallback, mapFragmentId, screenshotDelay);
             } else {
                 ScreenshotsTask.perform(T, callback, completionCallback, screenshotDelay);
             }
