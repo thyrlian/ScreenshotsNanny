@@ -7,6 +7,7 @@
     <string name="button_network">Netzwerk Activity</string>
     <string name="button_maps">Karten Activity</string>
     <string name="type_hint">Geben Sie hier Ihren Text ein</string>
+    <string name="menu_action_settings">Einstellungen</string>
 
     <!-- SecondActivity -->
     <string name="title_activity_second">ZweiteActivity</string>
@@ -23,5 +24,7 @@
     <string name="edit_text_lat_hint">Breitengrad</string>
     <string name="edit_text_lng_hint">Längengrad</string>
 
-
+    <!-- SettingsActivity -->
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="message_settings_saved">Einstellungen erfolgreich gespeichert.</string>
 </resources>

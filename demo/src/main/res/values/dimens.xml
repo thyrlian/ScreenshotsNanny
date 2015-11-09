@@ -5,4 +5,5 @@
     <dimen name="widget_horizontal_margin">8dp</dimen>
     <dimen name="user_image_size">18dp</dimen>
     <dimen name="user_name_size">24sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

@@ -7,6 +7,7 @@
     <string name="button_network">Network Activity</string>
     <string name="button_maps">Maps Activity</string>
     <string name="type_hint">Enter text here</string>
+    <string name="menu_action_settings">Settings</string>
 
     <!-- SecondActivity -->
     <string name="title_activity_second">SecondActivity</string>
@@ -23,5 +24,7 @@
     <string name="edit_text_lat_hint">Latitude</string>
     <string name="edit_text_lng_hint">Longitude</string>
 
-
+    <!-- SettingsActivity -->
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="message_settings_saved">Settings have been saved successfully.</string>
 </resources>
