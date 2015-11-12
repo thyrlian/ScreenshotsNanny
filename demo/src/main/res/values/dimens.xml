@@ -6,4 +6,6 @@
     <dimen name="user_image_size">18dp</dimen>
     <dimen name="user_name_size">24sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="account_info_size">20sp</dimen>
+    <dimen name="account_label_size">18sp</dimen>
 </resources>

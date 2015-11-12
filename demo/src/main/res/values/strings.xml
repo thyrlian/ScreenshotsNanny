@@ -26,5 +26,8 @@
 
     <!-- AccountActivity -->
     <string name="title_activity_account">AccountActivity</string>
+    <string name="info_empty_account">No available user yet</string>
     <string name="message_account_fab_about">There is nothing special about me.</string>
+    <string name="text_user">User</string>
+    <string name="text_points">Points</string>
 </resources>
