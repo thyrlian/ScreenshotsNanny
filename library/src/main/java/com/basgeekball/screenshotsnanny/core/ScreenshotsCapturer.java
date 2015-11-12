@@ -88,42 +88,47 @@ public class ScreenshotsCapturer {
             Fragment fragment = fragmentManager.findFragmentById(mapFragmentId);
             if (fragment instanceof SupportMapFragment) {
                 final GoogleMap map = ((SupportMapFragment) fragment).getMap();
-                map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-                    @Override
-                    public void onMapLoaded() {
-                        map.snapshot(new GoogleMap.SnapshotReadyCallback() {
-                            @Override
-                            public void onSnapshotReady(final Bitmap map) {
-                                final Callback drawScreenshot = new Callback() {
-                                    @Override
-                                    public void execute() {
-                                        View rootView = activity.findViewById(android.R.id.content).getRootView();
-                                        rootView.setDrawingCacheEnabled(true);
-                                        Bitmap background = rootView.getDrawingCache();
-                                        Bitmap bitmap = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
-                                        Canvas canvas = new Canvas(bitmap);
-                                        canvas.drawBitmap(background, 0, 0, null);
-                                        int[] mapLocation = getViewLocationOnlyIfRendered(mapFragmentId);
-                                        canvas.drawBitmap(map, mapLocation[0], mapLocation[1], null);
-                                        saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
-                                        Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
-                                        callback.execute();
-                                    }
-                                };
-                                if (screenshotDelay > 0) {
-                                    new Handler().postDelayed(new Runnable() {
+                // map is null when Play services is missing
+                if (map != null) {
+                    map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                        @Override
+                        public void onMapLoaded() {
+                            map.snapshot(new GoogleMap.SnapshotReadyCallback() {
+                                @Override
+                                public void onSnapshotReady(final Bitmap map) {
+                                    final Callback drawScreenshot = new Callback() {
                                         @Override
-                                        public void run() {
-                                            drawScreenshot.execute();
+                                        public void execute() {
+                                            View rootView = activity.findViewById(android.R.id.content).getRootView();
+                                            rootView.setDrawingCacheEnabled(true);
+                                            Bitmap background = rootView.getDrawingCache();
+                                            Bitmap bitmap = Bitmap.createBitmap(background.getWidth(), background.getHeight(), background.getConfig());
+                                            Canvas canvas = new Canvas(bitmap);
+                                            canvas.drawBitmap(background, 0, 0, null);
+                                            int[] mapLocation = getViewLocationOnlyIfRendered(mapFragmentId);
+                                            canvas.drawBitmap(map, mapLocation[0], mapLocation[1], null);
+                                            saveToFile(bitmap, activity.getClass().getSimpleName(), activity);
+                                            Log.i(Constants.LOG_TAG, "♬ Screenshot is taken (including Map)");
+                                            callback.execute();
                                         }
-                                    }, screenshotDelay);
-                                } else {
-                                    drawScreenshot.execute();
+                                    };
+                                    if (screenshotDelay > 0) {
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                drawScreenshot.execute();
+                                            }
+                                        }, screenshotDelay);
+                                    } else {
+                                        drawScreenshot.execute();
+                                    }
                                 }
-                            }
-                        });
-                    }
-                });
+                            });
+                        }
+                    });
+                } else {
+                    callback.execute();
+                }
             }
         }
     }
