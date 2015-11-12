@@ -31,8 +31,8 @@
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:name=".activities.AccountActivity"
+            android:label="@string/title_activity_account"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                startActivity(SettingsActivity.createIntent(MainActivity.this));
+                startActivity(AccountActivity.createIntent(MainActivity.this));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

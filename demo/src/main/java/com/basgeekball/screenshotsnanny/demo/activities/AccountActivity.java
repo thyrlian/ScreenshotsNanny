@@ -11,16 +11,16 @@ import android.view.View;
 
 import com.basgeekball.screenshotsnanny.demo.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
 
     public static Intent createIntent(Activity activity) {
-        return new Intent(activity, SettingsActivity.class);
+        return new Intent(activity, AccountActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_account);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, getResources().getText(R.string.message_settings_saved), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, getResources().getText(R.string.message_account_fab_about), Snackbar.LENGTH_LONG).show();
             }
         });
     }
