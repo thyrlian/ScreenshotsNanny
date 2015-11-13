@@ -8,10 +8,12 @@ import android.util.Log;
 import com.basgeekball.screenshotsnanny.activityassistant.ActivityCounter;
 import com.basgeekball.screenshotsnanny.core.Constants;
 import com.basgeekball.screenshotsnanny.demo.R;
+import com.basgeekball.screenshotsnanny.demo.activities.AccountActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.MainActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.MapsActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.NetworkActivity;
 import com.basgeekball.screenshotsnanny.demo.activities.SecondActivity;
+import com.basgeekball.screenshotsnanny.demo.models.AccountManager;
 import com.basgeekball.screenshotsnanny.demo.network.GithubService;
 import com.basgeekball.screenshotsnanny.helper.Callback;
 import com.basgeekball.screenshotsnanny.helper.LanguageSwitcher;
@@ -68,6 +70,15 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
             @Override
             public void execute() {
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
+            }
+        });
+
+        startActivityAndTakeScreenshot(AccountActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                AccountManager.create(getApplicationContext(), "Bruce Lee");
+                AccountManager.update(getApplicationContext(), 1048576);
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, AccountActivity.class));
             }
         });
 
