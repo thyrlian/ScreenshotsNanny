@@ -9,3 +9,7 @@ Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsN
 
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
+
+##Last but not least
+This is made in Berlin with love and passion :)
+![Made in Berlin](https://cloud.githubusercontent.com/assets/352956/11226672/b2a693fe-8d81-11e5-8d87-7f507d63e029.png)
