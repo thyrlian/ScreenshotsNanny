@@ -7,6 +7,9 @@ The other fact is that most of the modern apps consume internet resources, or ha
 
 Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsNanny.
 
+##Comparison
+![Comparison](https://cloud.githubusercontent.com/assets/352956/11259880/05b9cdd8-8e66-11e5-8829-705061486bf6.png)
+
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
