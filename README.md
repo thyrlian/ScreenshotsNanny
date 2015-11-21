@@ -56,6 +56,77 @@ You can leave the layout as it is (an empty view group), because we don't really
 
 4 - Add the core screenshot code to the new launcher activity **ScreenshotsPrimeActivity.java**:
 ```java
+public class ScreenshotsPrimeActivity extends AppCompatActivity {
+
+    private MockServerWrapper mServer;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_screenshots_prime);
+
+        // if you want to have screenshots contents in different language
+        // LanguageSwitcher.change(this, "de");
+
+        mServer = new MockServerWrapper();
+        String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
+        ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
+            @Override
+            public void execute(String value) {
+                PowerChanger.changeFinalString(GithubService.class, "API_URL", value);
+            }
+        };
+        mServer.start(changeUrlCallback, response);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, MainActivity.class));
+            }
+        });
+
+        startActivityAndTakeScreenshot(SecondActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(SecondActivity.createIntent(ScreenshotsPrimeActivity.this, "London bridge is falling down"));
+            }
+        });
+
+        startActivityAndTakeScreenshot(NetworkActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
+            }
+        });
+
+        startActivityAndTakeScreenshot(AccountActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                AccountManager.create(getApplicationContext(), "Bruce Lee");
+                AccountManager.update(getApplicationContext(), 1048576);
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, AccountActivity.class));
+            }
+        });
+
+        startActivityContainsMapAndTakeScreenshot(MapsActivity.class, new Callback() {
+            @Override
+            public void execute() {
+                startActivity(new Intent(ScreenshotsPrimeActivity.this, MapsActivity.class));
+            }
+        }, R.id.map);
+
+        if (!ActivityCounter.isAnyActivityRunning) {
+            Log.i(Constants.LOG_TAG, "⚙ Done.");
+            mServer.stop();
+            finish();
+        }
+    }
+}
 ```
 
 ##Screenshots
