@@ -15,6 +15,8 @@ Below are two different screenshots for the same activity.  The left one is usin
 
 ##Setup & Sample code
 Please check out the demo module along with this project.
+```java
+```
 
 ##Screenshots
 
