@@ -37,7 +37,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         // Set up the screenshot fixture
 
         // Set language (resources configuration) other than the default one if it's necessary
-        LanguageSwitcher.change(this, "de");
+        // LanguageSwitcher.change(this, "de");
 
         // Set up the mock server
         mServer = new MockServerWrapper();
