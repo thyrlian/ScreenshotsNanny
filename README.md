@@ -43,6 +43,11 @@ Filter: tag = SSN
 
 ![Logs](https://cloud.githubusercontent.com/assets/352956/11317845/54ddb72a-903d-11e5-814f-0ebeb3872e07.png)
 
+##Import as dependency
+Gradle:
+```java
+```
+
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
