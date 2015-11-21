@@ -98,6 +98,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
         if (!ActivityCounter.isAnyActivityRunning) {
             Log.i(Constants.LOG_TAG, "⚙ Done.");
+            // Stop mock server when all screenshot jobs are done
             mServer.stop();
             finish();
         }
