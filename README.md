@@ -65,17 +65,24 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots_prime);
 
-        // if you want to have screenshots contents in different language
+        // Set up the screenshot fixture
+
+        // Set language (resources configuration) other than the default one if it's necessary
         // LanguageSwitcher.change(this, "de");
 
+        // Set up the mock server
         mServer = new MockServerWrapper();
+        // Read mock response(s) from resource directory
         String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
         ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
             @Override
             public void execute(String value) {
+                // The MockServer runs on arbitrary port each time
+                // We have to change production's base URL to the MockServer URL via reflection
                 PowerChanger.changeFinalString(GithubService.class, "API_URL", value);
             }
         };
+        // Start mock server with canned response(s), it accepts response(s) as varargs
         mServer.start(changeUrlCallback, response);
     }
 
@@ -83,9 +90,12 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // Start desired activities one by one, and take screenshot accordingly
+
         startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Start a normal activity
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, MainActivity.class));
             }
         });
@@ -93,6 +103,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(SecondActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Start an activity by an intent which contains something
                 startActivity(SecondActivity.createIntent(ScreenshotsPrimeActivity.this, "London bridge is falling down"));
             }
         });
@@ -100,6 +111,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(NetworkActivity.class, new Callback() {
             @Override
             public void execute() {
+                // This activity will consume mock response and present it
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
             }
         });
@@ -107,6 +119,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(AccountActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Prepare persistent data before starting the activity
                 AccountManager.create(getApplicationContext(), "Bruce Lee");
                 AccountManager.update(getApplicationContext(), 1048576);
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, AccountActivity.class));
@@ -116,12 +129,14 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityContainsMapAndTakeScreenshot(MapsActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Take screenshot for an activity which contains Map, need to pass map view id
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, MapsActivity.class));
             }
         }, R.id.map);
 
         if (!ActivityCounter.isAnyActivityRunning) {
             Log.i(Constants.LOG_TAG, "⚙ Done.");
+            // Stop mock server when all screenshot jobs are done
             mServer.stop();
             finish();
         }
