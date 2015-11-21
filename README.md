@@ -146,6 +146,8 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 }
 ```
 
+**5** - Select **screenshotsDebug** as build variant, run it.  Then all screenshots will be placed under *DEVICE_STORAGE/Screenshots/APP_NAME/*.  Each screenshot file is named as corresponding activity name (format is PNG).
+
 ##Screenshots
 * The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
 * MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
