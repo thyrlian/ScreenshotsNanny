@@ -54,7 +54,9 @@ You can leave the layout as it is (an empty view group), because we don't really
 </manifest>
 ```
 
-**4** - Add the core screenshot code to the new launcher activity **ScreenshotsPrimeActivity.java**:
+**4** - Add the core screenshot code to the new launcher activity **ScreenshotsPrimeActivity.java**.
+
+There are two major methods: ```startActivityAndTakeScreenshot``` & ```startActivityContainsMapAndTakeScreenshot```.  Without passing **screenshotDelay**, the former one uses default value 3 seconds, and the latter one takes screenshot immediately when map view is ready.  You could give your own screenshotDelay to both of the methods.
 ```java
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
