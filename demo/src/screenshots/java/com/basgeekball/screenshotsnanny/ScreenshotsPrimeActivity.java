@@ -34,6 +34,9 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots_prime);
 
+        // if you want to have screenshots contents in different language
+        // LanguageSwitcher.change(this, "de");
+
         mServer = new MockServerWrapper();
         String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
         ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
@@ -48,9 +51,6 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // if you want to have screenshots in different language
-        // LanguageSwitcher.change(this, "de");
 
         startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
             @Override
