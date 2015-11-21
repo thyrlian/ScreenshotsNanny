@@ -16,6 +16,8 @@ Below are two different screenshots for the same activity.  The left one is usin
 ##Setup & Sample code
 Please check out the demo module along with this project.
 
+##Screenshots
+
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
