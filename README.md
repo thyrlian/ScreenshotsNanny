@@ -15,7 +15,12 @@ Below are two different screenshots for the same activity.  The left one is usin
 ![Comparison](https://cloud.githubusercontent.com/assets/352956/11276098/e8e25434-8ee0-11e5-9685-df75085859e6.png)
 
 ##Setup & Sample code
-Please check out the demo module along with this project.
+There are two approaches to utilizing this library.
+* Setup an **automated UI test** (e.g. [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)).
+* Create another **product flavor** in your project to do the screenshots job.
+
+I'll explain the product flavor approach in detail.  You can also check out the demo module along with this project.
+
 ```java
 ```
 
