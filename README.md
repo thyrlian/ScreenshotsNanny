@@ -19,6 +19,8 @@ Please check out the demo module along with this project.
 ```
 
 ##Screenshots
+* The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
+* MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
 
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
