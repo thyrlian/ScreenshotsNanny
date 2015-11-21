@@ -22,6 +22,8 @@ Please check out the demo module along with this project.
 ##Screenshots
 * The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
 * MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
+* For any activity consumes network resources, you can replace the content by canned mock response.
+* Some activities may read values from persistent data (e.g. SharedPreferences), you can also prepare the values before activity starts.
 
 <a href="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" height="300"></a>
 <a href="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" height="300"></a>
