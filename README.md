@@ -41,6 +41,6 @@ Please check out the demo module along with this project.
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
 ##Last but not least
-This is made in Berlin with love and passion :)
+This is made in Berlin with love and passion ʕ´•ᴥ•`ʔ
 
 <a href="../../" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11226672/b2a693fe-8d81-11e5-8d87-7f507d63e029.png" height="200"></a>
