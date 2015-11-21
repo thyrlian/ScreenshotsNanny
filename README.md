@@ -13,7 +13,8 @@ Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsN
 Below are two different screenshots for the same activity.  The left one is using real arbitrary content, while the right one is using prepared mock response.
 ![Comparison](https://cloud.githubusercontent.com/assets/352956/11276098/e8e25434-8ee0-11e5-9685-df75085859e6.png)
 
-##Sample code
+##Setup & Sample code
+Please check out the demo module along with this project.
 
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
