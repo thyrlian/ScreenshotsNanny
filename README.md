@@ -31,6 +31,10 @@ Please check out the demo module along with this project.
 
 (sorry, these demo activities layouts were made with poor design, look ugly)
 
+##Logs
+
+![Logs](https://cloud.githubusercontent.com/assets/352956/11317845/54ddb72a-903d-11e5-814f-0ebeb3872e07.png)
+
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
