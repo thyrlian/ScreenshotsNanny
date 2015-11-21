@@ -151,7 +151,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 ##Screenshots
 * The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
 * MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
-* For any activity consumes network resources, you can replace the content by canned mock response.  (This library is using [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) from [Square, Inc.](https://github.com/square))
+* For any activity consumes network resources, you can replace the content by canned mock responses.  (This library is using [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) from [Square, Inc.](https://github.com/square))
 * Some activities may read values from persistent data (e.g. SharedPreferences), you can also prepare the values before activity starts.
 
 <a href="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" height="300"></a>
