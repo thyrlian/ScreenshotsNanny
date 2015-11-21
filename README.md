@@ -11,6 +11,7 @@ Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsN
 
 ##Comparison
 Below are two different screenshots for the same activity.  The left one is using real arbitrary content, while the right one is using prepared mock response.
+
 ![Comparison](https://cloud.githubusercontent.com/assets/352956/11276098/e8e25434-8ee0-11e5-9685-df75085859e6.png)
 
 ##Setup & Sample code
@@ -21,6 +22,14 @@ Please check out the demo module along with this project.
 ##Screenshots
 * The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
 * MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
+
+<a href="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" height="300"></a>
+<a href="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" height="300"></a>
+<a href="https://cloud.githubusercontent.com/assets/352956/11317840/3fbbee34-903d-11e5-8275-1863646bfdc3.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317840/3fbbee34-903d-11e5-8275-1863646bfdc3.png" height="300"></a>
+<a href="https://cloud.githubusercontent.com/assets/352956/11317843/48208760-903d-11e5-991d-371d65f0eee4.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317843/48208760-903d-11e5-991d-371d65f0eee4.png" height="300"></a>
+<a href="https://cloud.githubusercontent.com/assets/352956/11317844/4eb2770a-903d-11e5-98f4-5ccc7ea4ee7c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317844/4eb2770a-903d-11e5-98f4-5ccc7ea4ee7c.png" height="300"></a>
+
+(sorry, these demo activities layouts were made with poor design, look ugly)
 
 ##License
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
