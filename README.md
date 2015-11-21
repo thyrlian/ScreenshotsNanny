@@ -21,7 +21,7 @@ There are two approaches to utilizing this library.
 
 I'll explain the product flavor approach in detail.  You can also check out the demo module along with this project.
 
-1 - Add a product flavor (let's name it "**screenshots**") to your target module's **build.gradle**:
+**1** - Add a product flavor (let's name it "**screenshots**") to your target module's **build.gradle**:
 ```groovy
 productFlavors {
     prod {
@@ -32,11 +32,11 @@ productFlavors {
     }
 }
 ```
-2 - Create a blank dummy activity in the screenshots flavor: *MODULE/src/screenshots/java/PACKAGE_NAME/ScreenshotsPrimeActivity.java*
+**2** - Create a blank dummy activity in the screenshots flavor: *MODULE/src/screenshots/java/PACKAGE_NAME/ScreenshotsPrimeActivity.java*
 
 You can leave the layout as it is (an empty view group), because we don't really need it.
 
-3 - Set the created activity as the launcher activity in that product flavor:
+**3** - Set the created activity as the launcher activity in that product flavor:
 
 *MODULE/src/screenshots/AndroidManifest.xml*
 ```xml
@@ -54,7 +54,7 @@ You can leave the layout as it is (an empty view group), because we don't really
 </manifest>
 ```
 
-4 - Add the core screenshot code to the new launcher activity **ScreenshotsPrimeActivity.java**:
+**4** - Add the core screenshot code to the new launcher activity **ScreenshotsPrimeActivity.java**:
 ```java
 public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
