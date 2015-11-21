@@ -34,17 +34,24 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screenshots_prime);
 
-        // if you want to have screenshots contents in different language
-        // LanguageSwitcher.change(this, "de");
+        // Set up the screenshot fixture
 
+        // Set language (resources configuration) other than the default one if it's necessary
+        LanguageSwitcher.change(this, "de");
+
+        // Set up the mock server
         mServer = new MockServerWrapper();
+        // Read mock response(s) from resource directory
         String response = ResourceReader.readFromRawResource(ScreenshotsPrimeActivity.this, R.raw.github_user);
         ParameterizedCallback changeUrlCallback = new ParameterizedCallback() {
             @Override
             public void execute(String value) {
+                // The MockServer runs on arbitrary port each time
+                // We have to change production's base URL to the MockServer URL via reflection
                 PowerChanger.changeFinalString(GithubService.class, "API_URL", value);
             }
         };
+        // Start mock server with canned response(s), it accepts response(s) as varargs
         mServer.start(changeUrlCallback, response);
     }
 
