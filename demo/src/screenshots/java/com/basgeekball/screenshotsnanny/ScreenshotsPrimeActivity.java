@@ -59,9 +59,12 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // Start desired activities one by one, and take screenshot accordingly
+
         startActivityAndTakeScreenshot(MainActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Start a normal activity
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, MainActivity.class));
             }
         });
@@ -69,6 +72,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(SecondActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Start an activity by an intent which contains something
                 startActivity(SecondActivity.createIntent(ScreenshotsPrimeActivity.this, "London bridge is falling down"));
             }
         });
@@ -76,6 +80,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(NetworkActivity.class, new Callback() {
             @Override
             public void execute() {
+                // This activity will consume mock response and present it
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, NetworkActivity.class));
             }
         });
@@ -83,6 +88,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityAndTakeScreenshot(AccountActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Prepare persistent data before starting the activity
                 AccountManager.create(getApplicationContext(), "Bruce Lee");
                 AccountManager.update(getApplicationContext(), 1048576);
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, AccountActivity.class));
@@ -92,6 +98,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
         startActivityContainsMapAndTakeScreenshot(MapsActivity.class, new Callback() {
             @Override
             public void execute() {
+                // Take screenshot for an activity which contains Map, need to pass map view id
                 startActivity(new Intent(ScreenshotsPrimeActivity.this, MapsActivity.class));
             }
         }, R.id.map);
