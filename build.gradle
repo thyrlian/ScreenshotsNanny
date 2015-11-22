@@ -12,6 +12,32 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.3.1"
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    filesSpec {
+        from 'build/libs'
+        into '/'
+    }
+    pkg {
+        repo = 'android-libraries'
+        name = 'com.basgeekball.screenshotsnanny'
+        licenses = ['MIT']
+        websiteUrl = 'https://github.com/thyrlian/ScreenshotsNanny'
+        issueTrackerUrl = 'https://github.com/thyrlian/ScreenshotsNanny/issues'
+        vcsUrl = 'git@github.com:thyrlian/ScreenshotsNanny.git'
+        labels = ['Android', 'Screenshot', 'Mock']
+        version {
+            name = '1.0'
+            released  = new Date()
+        }
+    }
+}
+
 allprojects {
     repositories {
         jcenter()
@@ -24,6 +50,8 @@ ext {
     compileSdkVersion = 23
     buildToolsVersion = "23.0.0"
     unifiedJunit = "junit:junit:4.12"
+    versionCode = 1
+    versionName = "1.0"
 }
 
 task clean(type: Delete) {
