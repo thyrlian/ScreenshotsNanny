@@ -166,7 +166,7 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 ##Logs
 Filter: tag = SSN
 
-![Logs](https://cloud.githubusercontent.com/assets/352956/11317845/54ddb72a-903d-11e5-814f-0ebeb3872e07.png)
+![Logs](https://cloud.githubusercontent.com/assets/352956/11323117/bf3d825e-9109-11e5-8b9a-4d822c960240.png)
 
 ##Import as dependency
 Gradle:
