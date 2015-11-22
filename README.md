@@ -171,7 +171,9 @@ Filter: tag = SSN
 ##Import as dependency
 Gradle:
 ```java
-// will publish to JCenter soon
+dependencies {
+    compile 'com.basgeekball:screenshots-nanny:1.0'
+}
 ```
 
 ##License
