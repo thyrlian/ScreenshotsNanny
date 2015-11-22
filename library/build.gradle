@@ -32,6 +32,9 @@ android {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/dependencies.txt'
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 configurations.all {

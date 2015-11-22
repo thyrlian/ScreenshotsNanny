@@ -30,6 +30,9 @@ android {
             applicationId "com.basgeekball.screenshotsnanny.screenshots"
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 configurations.all {
