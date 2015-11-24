@@ -169,7 +169,7 @@ Filter: tag = SSN
 ![Logs](https://cloud.githubusercontent.com/assets/352956/11323117/bf3d825e-9109-11e5-8b9a-4d822c960240.png)
 
 ##Import as dependency
-Gradle:
+Gradle: (available in Bintray's [JCenter](https://bintray.com/thyrlian/android-libraries/com.basgeekball.screenshotsnanny/view))
 ```java
 dependencies {
     compile 'com.basgeekball:screenshots-nanny:1.0'
