@@ -46,9 +46,9 @@ configurations.all {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile rootProject.ext.unifiedJunit
-    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile 'com.squareup.okhttp:mockwebserver:2.7.5'
-    compile 'com.google.android.gms:play-services-maps:8.3.0'
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    compile "com.google.android.gms:play-services-maps:${rootProject.ext.playServicesVersion}"
 }
 
 apply from: 'https://raw.githubusercontent.com/thyrlian/ScreenshotsNanny/master/publish.gradle'

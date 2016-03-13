@@ -52,6 +52,7 @@ ext {
     versionName = "1.0"
     buildToolsVersion = '23.0.2'
     supportLibVersion = '24.0.0-alpha1'
+    playServicesVersion = '8.3.0'
     unifiedJunit = 'junit:junit:4.12'
 }
 
