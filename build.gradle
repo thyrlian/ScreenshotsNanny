@@ -32,7 +32,7 @@ bintray {
         vcsUrl = 'git@github.com:thyrlian/ScreenshotsNanny.git'
         labels = ['Android', 'Screenshot', 'Mock']
         version {
-            name = '1.0'
+            name = '1.1'
             released  = new Date()
         }
     }
@@ -48,12 +48,12 @@ ext {
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
-    versionCode = 1
-    versionName = "1.0"
     buildToolsVersion = '23.0.2'
     supportLibVersion = '24.0.0-alpha1'
     playServicesVersion = '8.4.0'
     unifiedJunit = 'junit:junit:4.12'
+    versionCode = 2
+    versionName = '1.1'
 }
 
 task clean(type: Delete) {
