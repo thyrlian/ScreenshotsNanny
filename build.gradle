@@ -48,10 +48,11 @@ ext {
     minSdkVersion = 14
     targetSdkVersion = 23
     compileSdkVersion = 23
-    buildToolsVersion = "23.0.0"
-    unifiedJunit = "junit:junit:4.12"
     versionCode = 1
     versionName = "1.0"
+    buildToolsVersion = '23.0.2'
+    supportLibVersion = '24.0.0-alpha1'
+    unifiedJunit = 'junit:junit:4.12'
 }
 
 task clean(type: Delete) {
