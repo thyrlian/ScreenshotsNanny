@@ -35,15 +35,8 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force rootProject.ext.unifiedJunit
-    }
-}
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile rootProject.ext.unifiedJunit
     compile project(':library')
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:design:${rootProject.ext.supportLibVersion}"

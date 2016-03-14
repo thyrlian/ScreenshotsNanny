@@ -37,15 +37,8 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force rootProject.ext.unifiedJunit
-    }
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile rootProject.ext.unifiedJunit
     compile 'com.squareup.okhttp:mockwebserver:2.7.5'
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.google.android.gms:play-services-maps:${rootProject.ext.playServicesVersion}"
