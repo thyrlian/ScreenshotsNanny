@@ -7,11 +7,11 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
-import retrofit.Call;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.http.GET;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public class GithubService {
     public static final String API_URL = "https://api.github.com";
