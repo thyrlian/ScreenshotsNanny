@@ -175,7 +175,7 @@ Filter: tag = SSN
 Gradle: (available in Bintray's [JCenter](https://bintray.com/thyrlian/android-libraries/com.basgeekball.screenshotsnanny/view))
 ```java
 dependencies {
-    compile 'com.basgeekball:screenshots-nanny:1.0'
+    compile 'com.basgeekball:screenshots-nanny:1.2'
 }
 ```
 
