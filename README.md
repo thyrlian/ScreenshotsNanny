@@ -15,7 +15,7 @@ Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsN
 ##Comparison
 Below are two different screenshots for the same activity.  The left one is using real arbitrary content, while the right one is using prepared mock response.
 
-![Comparison](https://cloud.githubusercontent.com/assets/352956/11276098/e8e25434-8ee0-11e5-9685-df75085859e6.png)
+![Comparison](https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_comparison.png)
 
 ##Setup & Sample code
 There are two approaches to utilizing this library.
@@ -158,18 +158,18 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 * For any activity consumes network resources, you can replace the content by canned mock responses.  (This library is using [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) from [Square, Inc.](https://github.com/square))
 * Some activities may read values from persistent data (e.g. SharedPreferences), you can also prepare the values before activity starts.
 
-<a href="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317838/3032f606-903d-11e5-914d-cd37a07ca147.png" height="300"></a>
-<a href="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317839/35be90ee-903d-11e5-83bf-3c6e33e08f3c.png" height="300"></a>
-<a href="https://cloud.githubusercontent.com/assets/352956/11317840/3fbbee34-903d-11e5-8275-1863646bfdc3.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317840/3fbbee34-903d-11e5-8275-1863646bfdc3.png" height="300"></a>
-<a href="https://cloud.githubusercontent.com/assets/352956/11317843/48208760-903d-11e5-991d-371d65f0eee4.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317843/48208760-903d-11e5-991d-371d65f0eee4.png" height="300"></a>
-<a href="https://cloud.githubusercontent.com/assets/352956/11317844/4eb2770a-903d-11e5-98f4-5ccc7ea4ee7c.png" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11317844/4eb2770a-903d-11e5-98f4-5ccc7ea4ee7c.png" height="300"></a>
+<a href="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_main_activity.png" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_main_activity.png" height="300"></a>
+<a href="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_second_activity.png" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_second_activity.png" height="300"></a>
+<a href="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_network_activity.png" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_network_activity.png" height="300"></a>
+<a href="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_account_activity.png" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_account_activity.png" height="300"></a>
+<a href="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_maps_activity.png" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_maps_activity.png" height="300"></a>
 
 (sorry, these demo activities layouts were made with poor design, look ugly)
 
 ##Logs
 Filter: tag = SSN
 
-![Logs](https://cloud.githubusercontent.com/assets/352956/11323117/bf3d825e-9109-11e5-8b9a-4d822c960240.png)
+![Logs](https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/logs.png)
 
 ##Import as dependency
 Gradle: (available in Bintray's [JCenter](https://bintray.com/thyrlian/android-libraries/com.basgeekball.screenshotsnanny/view))
@@ -190,4 +190,4 @@ Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitati
 ##Last but not least
 This is made in Berlin with love and passion  ʕ´•ᴥ•`ʔ
 
-<a href="../../" target="_blank"><img src="https://cloud.githubusercontent.com/assets/352956/11226672/b2a693fe-8d81-11e5-8d87-7f507d63e029.png" height="200"></a>
+<a href="../../" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/made_in_berlin_badge.png" height="200"></a>
