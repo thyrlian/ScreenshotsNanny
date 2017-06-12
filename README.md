@@ -5,20 +5,24 @@
 
 # ScreenshotsNanny
 
-##Introduction
+## Introduction
+
 Until the time of writing, the Android toolchain doesn't have anything to help take screenshots automatically for publishing on Google Play Store.
 
 The other fact is that most of the modern apps consume internet resources, or have UGC (user-generated content).  And for the screenshots showing on Google Play, no one would like to see any arbitrary content which may be ugly or even inappropriate.
 
 Be professional!  Be beautiful!  You can achieve it easily by using ScreenshotsNanny.
 
-##Comparison
+## Comparison
+
 Below are two different screenshots for the same activity.  The left one is using real arbitrary content, while the right one is using prepared mock response.
 
 ![Comparison](https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/screenshot_comparison.png)
 
-##Setup & Sample code
+## Setup & Sample code
+
 There are two approaches to utilizing this library.
+
 * Setup an **automated UI test** (e.g. [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)).
 * Create another **product flavor** in your project to do the screenshot job.
 
@@ -151,7 +155,8 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
 **5** - Select **screenshotsDebug** as build variant, run it.  Then all screenshots will be placed under *DEVICE_STORAGE/Screenshots/APP_NAME/*.  Each screenshot file is named as corresponding activity name (format is PNG).
 
-##Screenshots
+## Screenshots
+
 * The Android Status Bar won't be captured as part of the screenshot, so you don't have to worry about the messy icons there.
 * Forget about the annoying on-screen keyboard, this library will hide it for you.
 * MapView (no matter if it fulfills the window or not) will also be taken into the screenshot.
@@ -166,12 +171,14 @@ public class ScreenshotsPrimeActivity extends AppCompatActivity {
 
 (sorry, these demo activities layouts were made with poor design, look ugly)
 
-##Logs
+## Logs
+
 Filter: tag = SSN
 
 ![Logs](https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/logs.png)
 
-##Import as dependency
+## Import as dependency
+
 Gradle: (available in Bintray's [JCenter](https://bintray.com/thyrlian/android-libraries/com.basgeekball.screenshotsnanny/view))
 ```java
 dependencies {
@@ -179,15 +186,18 @@ dependencies {
 }
 ```
 
-##Publish
+## Publish
+
 ```bash
 gradle generateRelease
 ```
 
-##License
+## License
+
 Copyright (c) 2015 Jing Li. See the LICENSE file for license rights and limitations (MIT).
 
-##Last but not least
+## Last but not least
+
 This is made in Berlin with love and passion  ʕ´•ᴥ•`ʔ
 
 <a href="../../" target="_blank"><img src="https://github.com/thyrlian/ScreenshotsNanny/blob/master/resource/images/made_in_berlin_badge.png" height="200"></a>
